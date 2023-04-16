@@ -1,0 +1,15 @@
+# .gitignore
+
+.vs/
+
+.vscode/
+
+vendor/
+
+*.json
+
+*.lock
+
+*.ini
+
+database/*.ini

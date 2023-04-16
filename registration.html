@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Metadata -->
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Links -->
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600&display=swap" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/form.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/a4b16492f8.js" crossorigin="anonymous"></script>
+
+    <title>Register</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form_vodacka">
+            <!-- Multi step form -->
+            <section class="multi_step_form">
+                <form id="form_apply" enctype="multipart/form-data" autocomplete="off">
+                    <!-- Title -->
+                    <div class="title">
+                        <h2>Register a new account</h2>
+                    </div>
+                    <!-- progressbar -->
+                    <ul id="progressbar">
+                        <li class="active">User Details</li>
+                        <li>Contact Details</li>
+                        <li>Password</li>
+                        <li>Confirmation</li>
+                    </ul>
+                    <!-- fieldsets -->
+                    <fieldset>
+                        <h3>User Details</h3>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <input id="nick" type="text" name="nick" class="form-control form-input"
+                                    placeholder="Your Name" oninput="validateName(this, '#nick_continue')">
+                                <div id="name_error" class="error_message hidden">
+                                    <i class="fa fa-warning"></i>
+                                    It seems like that is not a real name. Please try again.
+                                </div>
+                                <br>
+                                <input id="address" type="text" name="address" class="form-control form-input"
+                                    placeholder="Address" oninput="validateAddress(this, '#nick_continue')">
+                                <div id="address_error" class="error_message hidden">
+                                    <i class="fa fa-warning"></i>
+                                    It seems like the address is not valid. Please try again.
+                                </div>
+                                <br>
+                                <input id="postal_code" type="text" name="postal_code" class="form-control form-input"
+                                    placeholder="Postal code" oninput="validatePostalCode(this, '#nick_continue')">
+                                <div id="postalCode_error" class="error_message hidden">
+                                    <i class="fa fa-warning"></i>
+                                    It seems like the postal code is not valid. Please try again.
+                                </div>
+                                <br>
+                                <input id="city" type="text" name="city" class="form-control form-input"
+                                    placeholder="City" oninput="validateCity(this, '#nick_continue')">
+                                <div id="city_error" class="error_message hidden">
+                                    <i class="fa fa-warning"></i>
+                                    It seems like the city is not valid. Please try again.
+                                </div>
+                                <br>
+                                <div class="country-select">
+                                    <select id="country" class="form-control form-input" name="country" required >
+                                        <option value="Czech republic">Czech republic</option>
+                                        <option value="Latvia">Latvia</option>
+                                        <option value="France">France</option>
+                                        <option value="Slovakia">Slovakia</option>
+                                        <option value="Bhutan">Bhutan</option>
+                                        <option value="China">China</option>
+                                        <option value="Latvia">Latvia</option>
+                                        <option value="Japan">Japan</option>                                            
+                                        <opition value="Estonia">Estonia</option>
+                                        <option value="Portugal">Portugal</option>
+                                    </select> 										
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <button type="button" class="action-button previous_button return_homepage"
+                            onclick="Redirect('index.html')">Go Back</button>
+                        <button id="nick_continue" type="button" class="next action-button disabled">Next</button>
+                        <!--disabled-->
+                    </fieldset>
+                    <fieldset>
+                        <h3>Contact Info</h3>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                            <input id="email" type="email" name="email" class="form-control form-input"
+                                placeholder="Your Email" oninput="validateEmail(this, '#checkbox_button')">
+                            <div id="email_error" class="error_message hidden">
+                                <i class="fa fa-warning"></i>
+                                It seems like that is not a real email. Please try again
+                            </div>
+
+                            <br>
+
+                            <div id="duplicateEmail_error" class="error_message hidden">
+                                <i class="fa fa-warning"></i>
+                                This Email is already taken. Please try again
+                            </div>
+                            <input id="phone_number" type="text" name="phone_number" class="form-control form-input"
+                                placeholder="Your phone number" oninput="validatePhone(this, '#checkbox_button')">
+                            <div id="phone_error" class="error_message hidden">
+                                <i class="fa fa-warning"></i>
+                                It seems like that is not a real phone number. Please try again.
+                            </div>
+                            <br>
+
+                        </div>
+                    </div>
+                        <hr>
+                        <button type="button" class="action-button previous previous_button">Go Back</button>
+                        <button id="checkbox_button" type="button" class="next action-button disabled">Next</button>
+                    </fieldset>
+
+                    <fieldset>
+                        <h3>Password</h3>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <input id="password" type="password" name="password" class="form-control form-input" oninput="validatePassword(this, '#password_continue')"
+                                    placeholder="Type your password here">
+                            </div>
+                        </div>
+                        <hr>
+                        <button type="button" class="action-button previous previous_button">Go Back</button>
+                        <button id="password_continue" type="button" class="next action-button disabled">Next</button>
+                    </fieldset>
+
+                    <fieldset>
+                        <button type="button" class="action-button previous previous_button">Go Back</button>
+                        <button type="button" id="registerSend" name="apply_final"
+                            class="next action-button">Send!</button>
+                    </fieldset>
+                    <fieldset id="result"></fieldset>
+                </form>
+            </section>
+            <!-- End Multi step form -->
+        </div>
+    </div>
+    </section>
+    <!-- End form -->
+    </div>
+    </div>
+    </div>
+    </section>
+    <!-- Icons (FontsAwesome) -->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"></script>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
+    <!-- Modal -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.7"></script>
+    <!-- Scripts -->
+    <script src="assets/js/message.js"></script>
+    <script src="assets/js/registration.js"></script>
+
+</body>
+
+</html>
